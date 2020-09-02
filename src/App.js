@@ -1,9 +1,13 @@
 import React from 'react';
+import { Container, Snackbar } from '@material-ui/core';
+import Header from './components/Header';
 
 function App() {
   return (
     <>
-      <h1>Desde app</h1>
+      <Container className="tweets-simulator" maxWidth={false}>
+        <Header />
+      </Container>
     </>
   );
 }
