@@ -1,3 +1,13 @@
+## Dependencias Instaladas
+
+- Material-UI: npm install @material-ui/core
+
+- Material-UI SVG Icons: npm install @material-ui/icons
+
+- Moment.js: npm install moment --save
+
+- sass: npm install node-sass
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
