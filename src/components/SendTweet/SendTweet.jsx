@@ -8,7 +8,7 @@ import { TWEETS_STORAGE } from '../../utils/contants';
 
 import './SendTweet.scss';
 
-const SendTweet = ({ setToastprops }) => {
+const SendTweet = ({ setToastprops, allTweets }) => {
     //estado del modal
     const [isOpenModal, setIsOpenModal] = useState(false);
 
@@ -23,6 +23,10 @@ const SendTweet = ({ setToastprops }) => {
         e.preventDefault();
         const { name, tweet } = formValue;
         let allTweetArray = [];
+
+        if (allTweets) {
+            allTweetArray = allTweets;
+        }
 
         if (name.trim() === "" || tweet.trim() === "") {
             setToastprops({

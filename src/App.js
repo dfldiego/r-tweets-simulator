@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Snackbar } from '@material-ui/core';
 import Header from './components/Header';
 import SendTweet from './components/SendTweet';
+import { TWEETS_STORAGE } from './utils/contants';
 
 function App() {
 
+  //guarda los mensajes del snakbar.
   const [toastprops, setToastprops] = useState({
     open: false,
     text: null
   })
+  //guarda todos los tweets.
+  const [allTweets, setAllTweets] = useState([]);
+
+  useEffect(() => {
+    const AllTweetsStorage = localStorage.getItem(TWEETS_STORAGE);
+    const AllTweetsArray = JSON.parse(AllTweetsStorage);
+    setAllTweets(AllTweetsArray);
+  }, []);
 
   return (
     <>
@@ -16,6 +26,7 @@ function App() {
         <Header />
         <SendTweet
           setToastprops={setToastprops}
+          allTweets={allTweets}
         />
         <Snackbar
           anchorOrigin={{
