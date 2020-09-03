@@ -8,7 +8,7 @@ import { TWEETS_STORAGE } from '../../utils/contants';
 
 import './SendTweet.scss';
 
-const SendTweet = () => {
+const SendTweet = ({ setToastprops }) => {
     //estado del modal
     const [isOpenModal, setIsOpenModal] = useState(false);
 
@@ -25,12 +25,19 @@ const SendTweet = () => {
         let allTweetArray = [];
 
         if (name.trim() === "" || tweet.trim() === "") {
-            console.log('WARNING: Todos los campos son obligatorios');
+            setToastprops({
+                open: true,
+                text: 'WARNING: Todos los campos son obligatorios'
+            });
         } else {
             formValue.time = moment();
             allTweetArray.push(formValue);
             localStorage.setItem(TWEETS_STORAGE, JSON.stringify(allTweetArray));
-            console.log("Tweet enviado correctamente");
+            //console.log("Tweet enviado correctamente");
+            setToastprops({
+                open: true,
+                text: "Tweet enviado correctamente"
+            });
             closeModal();
         }
         allTweetArray = [];
