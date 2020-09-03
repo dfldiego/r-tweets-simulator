@@ -14,12 +14,21 @@ function App() {
   })
   //guarda todos los tweets.
   const [allTweets, setAllTweets] = useState([]);
+  const [reloadtweets, setReloadTweets] = useState(false);
 
   useEffect(() => {
     const AllTweetsStorage = localStorage.getItem(TWEETS_STORAGE);
     const AllTweetsArray = JSON.parse(AllTweetsStorage);
     setAllTweets(AllTweetsArray);
-  }, []);
+    setReloadTweets(false);
+  }, [reloadtweets]);
+
+  const deleteTweet = index => {
+    allTweets.splice(index, 1);
+    setAllTweets(allTweets);
+    localStorage.setItem(TWEETS_STORAGE, JSON.stringify(allTweets));
+    setReloadTweets(true);
+  }
 
   return (
     <>
@@ -31,6 +40,7 @@ function App() {
         />
         <ListTweets
           allTweets={allTweets}
+          deleteTweet={deleteTweet}
         />
         <Snackbar
           anchorOrigin={{

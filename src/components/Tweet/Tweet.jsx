@@ -4,7 +4,7 @@ import DeleteTwoToneIcon from '@material-ui/icons/DeleteTwoTone';
 import moment from 'moment';
 import './Tweet.scss';
 
-const Tweet = ({ tweety, index }) => {
+const Tweet = ({ tweety, index, deleteTweet }) => {
 
     const { name, tweet, time } = tweety;
 
@@ -16,7 +16,7 @@ const Tweet = ({ tweety, index }) => {
                     <div className="tweet__header">
                         <h5>{name}</h5>
                         <DeleteTwoToneIcon
-                            onClick={() => console.log("Tweet Eliminado")}
+                            onClick={() => deleteTweet(index)}
                         />
                     </div>
                     <p>{tweet}</p>

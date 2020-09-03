@@ -3,10 +3,10 @@ import { Grid } from '@material-ui/core';
 import './ListTweets.scss';
 import Tweet from '../Tweet';
 
-const ListTweets = ({ allTweets }) => {
+const ListTweets = ({ allTweets, deleteTweet }) => {
     console.log(allTweets);
 
-    if (!allTweets || allTweets === 0) {
+    if (!allTweets || allTweets.length === 0) {
         return (
             <div className="list-tweets-empty">
                 <h2>No hay Tweets...</h2>
@@ -29,6 +29,7 @@ const ListTweets = ({ allTweets }) => {
                         <Tweet
                             tweety={tweety}
                             index={index}
+                            deleteTweet={deleteTweet}
                         />
                     </Grid>
                 ))}
